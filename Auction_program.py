@@ -84,8 +84,11 @@ while (Auction_over != False):
         name=input("what is your name: ")
         price=int(input("what is your bidding amount:$ "))
         auctioner_unique_id=input("what is your assigned unique auctioner id: ")
-        Auction_stats[auctioner_unique_id] = [name, price]
-        max_item = max(Auction_stats.items(),key=lambda item: item[1][1])
+        if auctioner_unique_id in Auction_stats:
+           print("alert sorry this auction id already exist in the pool")
+        else:
+            Auction_stats[auctioner_unique_id] = [name, price]
+            max_item = max(Auction_stats.items(),key=lambda item: item[1][1])
     elif auction_input=="no":
         Auction_over=False
         print(f"{max_item} is the winner of this set")
